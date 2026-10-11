@@ -1,8 +1,7 @@
-# APEX Music · 1.4.1
+# Auren Music · 1.4.1
 
 Player pessoal por URL para FiveM, independente de framework. Menu preto, branco e cinza com a fonte local `zsxMonTserrat` da base. Não reproduz áudio para outros jogadores e não cria entidades no mapa.
 
-## 📸 Preview
 
 <p align="center">
   <img src="./screenshots/Shot1.png" width="850">
@@ -18,9 +17,9 @@ Player pessoal por URL para FiveM, independente de framework. Menu preto, branco
 
 ## Uso
 
-1. Instale `APEX_music` em `resources/[addons]/[Scripts]`.
-2. Adicione `ensure APEX_music` ao `server.cfg`.
-3. No console do servidor: `refresh` e `ensure APEX_music`.
+1. Instale `Auren_Music` em `resources/[addons]/[Scripts]`.
+2. Adicione `ensure Auren_Music` ao `server.cfg`.
+3. No console do servidor: `refresh` e `ensure Auren_Music`.
 4. No computador do servidor, inicie `START_MUSIC.cmd` para ativar o resolvedor original.
 5. No jogo: `/music` ou `/Music`. Cole um link e clique em **Ouvir agora**.
 6. **Som Cinema** ativa a ambiência e o reforço de graves; **Intensidade** ajusta o efeito. Desative para comparar com o som original.
@@ -75,10 +74,10 @@ Veja [resolver/README.md](resolver/README.md) para iniciar o áudio original, en
 Exports de cliente:
 
 ```lua
-exports.APEX_music:Open()
-exports.APEX_music:Close()
-exports.APEX_music:Stop()
-local state = exports.APEX_music:GetState()
+exports.Auren_Music:Open()
+exports.Auren_Music:Close()
+exports.Auren_Music:Stop()
+local state = exports.Auren_Music:GetState()
 ```
 
 O menu não toma foco de outra NUI. A parada do recurso libera o foco que ele detém; players e carregamentos antigos são descartados ao trocar/parar uma faixa. O HUD some durante pausa do jogo/tela apagada. Não há loop Lua por frame; a verificação de pausa ocorre a cada 300 ms. O movimento do disco usa CSS. As SDKs dos embeds carregam somente ao selecionar um serviço que as usa. O resolvedor roda fora do FXServer, evitando permissões para execução de processos dentro do recurso.
@@ -102,3 +101,4 @@ Correção 1.3.2: o FiveM envia mensagens da janela raiz `nui://game` para o ifr
 Validação 1.4: renderização de áudio confirmou reforço de graves, variação por intensidade, ambiência estéreo real e bypass transparente ao desativar/zerar. Um sinal de graves forte atingiu pico de 0,8812, abaixo da saturação; o motor real do FiveM CEF também renderizou a reverberação estéreo. Controles, persistência, pausa, mute, cancelamento, movimento reduzido e layouts 720p/estreito foram verificados. O YouTube original de 189,461 segundos tocou com o efeito e manteve busca e continuação com o menu fechado. Testes de callbacks Lua e de abertura por mensagem da janela pai passaram.
 
 Correção 1.4.1: o Cinema agora está incorporado ao arquivo NUI existente `web/reactive.js`, evitando depender de `cinema.js` em um pacote de recurso cuja lista de arquivos ainda esteja desatualizada. A página não solicita mais o arquivo separado. A inicialização do menu também tolera a ausência de efeitos: continua o handshake ready e permite abrir/fechar, ocultando controles indisponíveis. Testes reproduziram o 404 e a ausência completa do módulo sem interromper a interface. `web/cinema.js` permanece como referência do código original; a execução no jogo usa a versão incorporada em `reactive.js`.
+
